@@ -12,7 +12,8 @@ namespace MoviesAPI.Helpers
             CreateMap<GenderPostDTO, Gender>();
 
             CreateMap<Actor, ActorDTO>().ReverseMap();
-            CreateMap<ActorPostDTO, Actor>();
+            CreateMap<ActorPostDTO, Actor>()
+                .ForMember(x => x.Photo, options => options.Ignore());
 
             CreateMap<BirthDayPerson, BirthDayPersonDTO>().ReverseMap();
             CreateMap<BirthDayPersonPostDTO, BirthDayPerson>();
