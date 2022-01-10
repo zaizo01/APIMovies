@@ -11,7 +11,10 @@ namespace MoviesAPI.Validations
                .WithMessage("Name is required");
 
             RuleFor(x => x.Name).Length(1, 120)
-               .WithMessage("Must be 1 and 120 charactes"); 
+               .WithMessage("Must be 1 and 120 charactes");
+
+            RuleFor(x => x.DateOfBirth).NotEmpty()
+                .WithMessage("Date of Birth is required");
             
         }
     }

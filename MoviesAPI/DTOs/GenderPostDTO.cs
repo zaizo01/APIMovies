@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MoviesAPI.DTOs
 {
-    public class GenderPostDTO: ActorPostValidator
+    public class GenderPostDTO
     {
         public string Name { get; set; }
     }

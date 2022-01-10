@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MoviesAPI.DTOs;
 using MoviesAPI.Entities;
+using MoviesAPI.Helpers;
 using MoviesAPI.Services;
 using System.Collections.Generic;
 using System.IO;
@@ -18,7 +20,7 @@ namespace MoviesAPI.Controllers
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
         private readonly IFileStore fileStore;
-        private readonly string container = "Actors";
+        private readonly string container = "actors";
 
         public ActorController(ApplicationDbContext context, IMapper mapper, IFileStore fileStore)
         {
@@ -28,9 +30,11 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ActorDTO>>> GetAllActors()
+        public async Task<ActionResult<List<ActorDTO>>> GetAllActors([FromQuery] PaginacionDTO paginationDTO)
         {
-            var entity = await context.Actors.ToListAsync();
+            var queryable = context.Actors.AsQueryable();
+            await HttpContext.InsertParameterPagination(queryable, paginationDTO.NumberOfRecordsPerPage);
+            var entity = await queryable.Paginar(paginationDTO).ToListAsync();
             return mapper.Map<List<ActorDTO>>(entity);
         }
 
@@ -82,6 +86,26 @@ namespace MoviesAPI.Controllers
             await context.SaveChangesAsync();
             return NoContent();
         }
+
+        [HttpPatch("{id:int}")]
+        public async Task<ActionResult> PatchActor(int id, [FromBody] JsonPatchDocument<ActorPatchDTO> patchDocument)
+        {
+            if (patchDocument == null) return BadRequest();
+
+            var actorDB = await context.Actors.FirstOrDefaultAsync(actor => actor.Id == id);
+            if (actorDB == null) return NotFound();
+
+            var actorDTO = mapper.Map<ActorPatchDTO>(actorDB);
+            patchDocument.ApplyTo(actorDTO, ModelState);
+
+            var isValid = TryValidateModel(actorDTO);
+            if (!isValid) return BadRequest(ModelState);
+
+            mapper.Map(actorDTO, actorDB);
+            await context.SaveChangesAsync();
+            return NoContent();
+        }
+
 
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> DeleteActor(int id)

@@ -66,3 +66,13 @@ C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Azure.Storage.Bl
 C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Azure.Storage.Common.dll
 C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\System.Memory.Data.dll
+C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll
+C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite.dll
+C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\NetTopologySuite.dll
+C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\NetTopologySuite.IO.SqlServerBytes.dll
+C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\obj\Debug\net5.0\EFCoreSqlServerNetTopologySuite.cs
+C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\zaiz\source\repos\MoviesAPI\MoviesAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
